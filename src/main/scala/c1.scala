@@ -102,8 +102,26 @@ object c1 {
   }
 
   // 8.	Napisz funkcję usuwającą zera z listy wartości całkowitych (tzn. zwracającą listę elementów mających wartości różne od 0).  Wykorzystaj rekurencję.
+  def zeroRemover(list: List[Int]): List[Int] = {
+    if (list.isEmpty) {
+      List()
+    } else {
+      if (list.head == 0)
+        zeroRemover(list.tail)
+      else
+        list.head :: zeroRemover(list.tail)
+    }
+  }
+
   // 9.	Zdefiniuj funkcję, przyjmującą listę liczb całkowitych i zwracającą wygenerowaną na jej podstawie listę, w której wszystkie liczby zostały zwiększone o 1. Wykorzystaj mechanizm mapowania kolekcji.
+  def incrementator(list: List[Int]): List[Int] = {
+    list.map(_ + 1)
+  }
+
   // 10.	Stwórz funkcję przyjmującą listę liczb rzeczywistych i zwracającą stworzoną na jej podstawie listę zawierającą wartości bezwzględne elementów z oryginalnej listy należących do przedziału <-5,12>. Wykorzystaj filtrowanie.
+  def filteredAbs(list: List[Double]): List[Double] = {
+    list.filter(a => a>=(-5) && a<=12).map(Math.abs)
+  }
 
   def main(args: Array[String]): Unit = {
     println("1a) \t" + concatList(dni))
@@ -121,5 +139,14 @@ object c1 {
     printTripple(Tuple3("Mooo", 66, 0.6))
     println("7)  \t" + optionExhibitionLottery(betValue = 1000, guess = 99))
     println("    \t" + optionExhibitionLottery(betValue = 20000, guess = 1))
+
+    val withZeros = List(0, -1, 2, 0, -99, 2, 2, 0, 0, 5, 1, 0)
+    println("original list for 8 & 9  " + withZeros.toString())
+    println("8) \t" + zeroRemover(withZeros).toString())
+    println("9) \t" + incrementator(withZeros).toString())
+
+    val reals = List(0, -1.4, 2.999, 0.75, -99, 2.1, 2.21, 0.3, 0.5454, 5.12, Math.PI, 0.9)
+    println("original list for 10  " + reals.toString())
+    println("10) \t" + filteredAbs(reals).toString())
   }
 }
