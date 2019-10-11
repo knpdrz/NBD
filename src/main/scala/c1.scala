@@ -3,7 +3,7 @@ object c1 {
   // NBD Ćwiczenia 1 – Scala
   // W każdym wypadku rozwiązanie powinno zawierać oczywiście instrukcje pozwalające wypisać wyniki itp.
   // 1.	Stwórz 7 elementową listę zawierającą nazwy dni tygodnia. Napisz funkcję tworzącą w oparciu o nią stringa z elementami oddzielonymi przecinkami korzystając z:
-  val dni = List("pon", "wt", "sr", "czw", "pt", "sob", "nie")
+  val dni = List("poniedzialek", "wtorek", "sroda", "czwartek", "piatek", "sobota", "niedziela")
 
   // a.	Pętli for
   def concatList(list: List[String]): String = {
