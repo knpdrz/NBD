@@ -114,9 +114,7 @@ object c1 {
   }
 
   // 9.	Zdefiniuj funkcję, przyjmującą listę liczb całkowitych i zwracającą wygenerowaną na jej podstawie listę, w której wszystkie liczby zostały zwiększone o 1. Wykorzystaj mechanizm mapowania kolekcji.
-  def incrementator(list: List[Int]): List[Int] = {
-    list.map(_ + 1)
-  }
+  def incrementator(list: List[Int]): List[Int] = list.map(_ + 1)
 
   // 10.	Stwórz funkcję przyjmującą listę liczb rzeczywistych i zwracającą stworzoną na jej podstawie listę zawierającą wartości bezwzględne elementów z oryginalnej listy należących do przedziału <-5,12>. Wykorzystaj filtrowanie.
   def filteredAbs(list: List[Double]): List[Double] = {
