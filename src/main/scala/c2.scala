@@ -67,19 +67,18 @@ object c2 {
   // Stwórz obiekty z traitami Student i Pracownik, pokaż jak podatek zadziała w zależności od kolejności w jakiej te traity zostały dodane przy tworzeniu obiektu.
   class Osoba(val imie: String, val nazwisko: String, val podatek: Double)
 
-  trait Pracownik{
-    var pensja: Double = 0.0
-    val podatek: Double = pensja*0.2
+  trait Pracownik extends Osoba{
+    var pensja: Double
+    override val podatek: Double = pensja * 0.2
   }
 
-  trait Student{
-    val podatek: Double = 0.0
+  trait Student extends Osoba {
+    override val podatek: Double = 0.0
   }
 
-  trait Nauczyciel extends Pracownik{
-    override val podatek: Double = pensja*0.1
+  trait Nauczyciel extends Pracownik {
+    override val podatek: Double = pensja * 0.1
   }
-
 
   def main(args: Array[String]): Unit = {
     println("1) poniedzialek: " + nauczycielDni("poniedzialek") + ", sfhs:" + nauczycielDni("sfhs") + ", niedziela: " + nauczycielDni("niedziela"))
@@ -105,18 +104,24 @@ object c2 {
     println("wynik funkcji square zaaplikowany trzy razy do liczby 2: " + applier(2, square))
 
     println("5)")
-    val student = new Osoba("A", "Student", 100.0) with Student{override val podatek = 100.0}
-    val nauczyciel = new Osoba("B", "Nauczyciel", 800.0) with Nauczyciel{override val podatek = 800.0}
-    val pracownik = new Osoba("C", "Pracownik", 1000.0) with Pracownik{override val podatek = 1000.0}
+    val student = new Osoba("A", "Student", 100.0) with Student {override val podatek = 100.0}
+    val nauczyciel: Osoba with Nauczyciel = new Osoba("B", "Nauczyciel", 800.0) with Nauczyciel {
+      override var pensja = 5000.0
+    }
+    val pracownik = new Osoba("C", "Pracownik", 1000.0) with Pracownik {
+      var pensja = 2000.0
+    }
 
     println("podatek studenta wynosi: " + student.podatek)
 
     nauczyciel.pensja = 9000.0
-    println("podatek nauczyciela z pensją: "+ nauczyciel.pensja + " wynosi: " + nauczyciel.podatek)
+    println("podatek nauczyciela z pensją: " + nauczyciel.pensja + " wynosi: " + nauczyciel.podatek)
 
-    pracownik.pensja = 4000.0
-    println("podatek pracownika z pensją: "+ pracownik.pensja + " wynosi: " + pracownik.podatek)
+    // pracownik.pensja = 4000.0
+    println("podatek pracownika z pensją: " + pracownik.pensja + " wynosi: " + pracownik.podatek)
     //needs work!
     //also second part of the question needs work
+
+
   }
 }
