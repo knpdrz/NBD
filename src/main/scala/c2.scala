@@ -4,7 +4,7 @@ object c2 {
   //  1.	Wykorzystaj Pattern Matching w funkcji przyjmującej parametr typu String.
   // Dla stringów odpowiadających nazwom dni tygodnia funkcja ma zwrócić „Praca” i „Weekend” (odpowiednio dla dni roboczych i wolnych), dla pozostałych napisów „Nie ma takiego dnia”.
   def nauczycielDni(text: String): String = {
-    text match {
+    text.toLowerCase match {
       case "poniedzialek" | "wtorek" | "sroda" | "czwartek" | "piatek" => "Praca"
       case "sobota" | "niedziela" => "Weekend"
       case _ => "Nie ma takiego dnia"
@@ -83,7 +83,7 @@ object c2 {
   }
 
   def main(args: Array[String]): Unit = {
-    println("1) poniedzialek: " + nauczycielDni("poniedzialek") + ", sfhs:" + nauczycielDni("sfhs") + ", niedziela: " + nauczycielDni("niedziela"))
+    println("1) poniedzialek: " + nauczycielDni("poniedzialek") + ", sfhs: " + nauczycielDni("sfhs") + ", niedziela: " + nauczycielDni("niedziela"))
 
     println("2)")
     val kontoBankowe = new KontoBankowe(999)
