@@ -1,0 +1,10 @@
+MongoDB shell version v4.2.1
+connecting to: mongodb://127.0.0.1:27017/nbd?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("332277c3-9144-45a7-8d1b-16c7e735117f") }
+MongoDB server version: 4.2.1
+before update
+"number of people with city Moscow = 2"
+"number of people with city Moskwa = 0"
+after update
+"number of people with city Moscow = 0"
+"number of people with city Moskwa = 2"

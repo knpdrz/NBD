@@ -1,0 +1,6 @@
+MongoDB shell version v4.2.1
+connecting to: mongodb://127.0.0.1:27017/nbd?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7ea1feec-ec64-498c-b554-8eaef33916fc") }
+MongoDB server version: 4.2.1
+"number of people with height > 190 before remove = 123"
+"number of people with height > 190 after remove = 0"
