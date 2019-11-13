@@ -20,5 +20,4 @@ db.people.mapReduce(
 )
 ;
 
-printjson(db.unique_jobs.find({value: 1},{nationality:1}).toArray().map(j => j._id));
-print("returned only unique jobs == ones that only one person performs");
+printjson(db.unique_jobs.find().toArray().map(j=>j._id));
