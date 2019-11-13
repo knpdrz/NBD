@@ -1,10 +1,10 @@
-/*db.people.find().forEach(function (person) {
+db.people.find().forEach(function (person) {
     person.credit.forEach(function (credit) {
         credit.balance = parseFloat(credit.balance);
     });
     db.people.save(person);
 
-});*/
+});
 
 printjson(db.people.aggregate([
     {
