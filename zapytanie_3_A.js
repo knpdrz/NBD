@@ -6,15 +6,8 @@ printjson(db.people.aggregate([
     },
     {
         $group: {
-            _id: "$job",
-            count: {$sum: 1}
-        }
-    },
-    {
-        $match: {
-            count: {$eq: 1}
+            _id: "$job"
         }
     },
     {$sort: {_id: 1}}
 ]).toArray().map(j => j._id));
-print("returned only unique jobs == ones that only one person performs");
