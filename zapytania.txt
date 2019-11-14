@@ -1,0 +1,27 @@
+1. match (movie:Movie) return movie.title
+2. match (m:Movie)<-[:ACTED_IN]-(hugo:Person {name:"Hugo Weaving"}) return m
+3. match (d:Person)-[:DIRECTED]->(m:Movie)<-[:ACTED_IN]-(hugo:Person {name:"Hugo Weaving"}) return distinct d
+4. match (p:Person)-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(hugo:Person{name:"Hugo Weaving"}) return distinct p
+5. match (m:Movie{title:"The Matrix"})<-[:ACTED_IN]-(p:Person)-[:ACTED_IN]->(movie:Movie) return distinct movie
+6. match (p:Person)-[:ACTED_IN]->(m:Movie) return p.name, count(m)
+7. match (p:Person)-[:WROTE]->(m:Movie),(p)-[:DIRECTED]->(m) return p,m.title
+8. match (keanu:Person{name:"Keanu Reeves"})-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(hugo:Person{name:"Hugo Weaving"}) return m
+9. 
+CREATE (avengers:Movie {title:'Captain America: Pierwsze starcie', released:2011, tagline:'Steve Rogers, something something organization'})
+CREATE (jj:Person {name:'Joe Johnson', born:1950})
+CREATE (cm:Person {name:'Christopher Markus', born:1967})
+CREATE (sm:Person {name:'Stephen McFeely', born:1961})
+CREATE (chris:Person {name:'Chris Evans', born:1960})
+CREATE (hay:Person {name:'Hayley Atwell', born:1967})
+CREATE (seba:Person {name:'Sebastian Stan', born:1965})
+CREATE (scigany:Person {name:'Tommy Lee Jones', born:1900})
+CREATE
+(chris)-[:ACTED_IN {roles:['Captain America']}]->(avengers),
+(hay)-[:ACTED_IN {roles:['Peggy Carter']}]->(avengers),
+(seba)-[:ACTED_IN {roles:['Bucky']}]->(avengers),
+(scigany)-[:ACTED_IN {roles:['Colonel Chester Phillips']}]->(avengers),
+(jj)-[:DIRECTED]->(avengers),
+(cm)-[:WROTE]->(avengers),
+(sm)-[:WROTE]->(avengers)
+
+match (d:Person)-[:DIRECTED]->(avengers:Movie{title:"Captain America: Pierwsze starcie"})<-[:ACTED_IN]-(p:Person),(avengers)<-[:WROTE]-(w:Person) return avengers,p,d,w

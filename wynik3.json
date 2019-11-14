@@ -1,0 +1,4 @@
+{"d":{"type":"node","id":"5","labels":["Person"],"properties":{"born":1967,"name":"Lilly Wachowski"}}}
+{"d":{"type":"node","id":"6","labels":["Person"],"properties":{"born":1965,"name":"Lana Wachowski"}}}
+{"d":{"type":"node","id":"25","labels":["Person"],"properties":{"born":1967,"name":"James Marshall"}}}
+{"d":{"type":"node","id":"108","labels":["Person"],"properties":{"born":1965,"name":"Tom Tykwer"}}}
