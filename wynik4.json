@@ -1,0 +1,202 @@
+﻿[
+  {
+    "a.name": "ORD",
+    "count(f)": 48
+  },
+  {
+    "a.name": "DTW",
+    "count(f)": 25
+  },
+  {
+    "a.name": "IAH",
+    "count(f)": 23
+  },
+  {
+    "a.name": "LAX",
+    "count(f)": 22
+  },
+  {
+    "a.name": "DEN",
+    "count(f)": 18
+  },
+  {
+    "a.name": "SFO",
+    "count(f)": 14
+  },
+  {
+    "a.name": "AZO",
+    "count(f)": 13
+  },
+  {
+    "a.name": "IAD",
+    "count(f)": 12
+  },
+  {
+    "a.name": "BNA",
+    "count(f)": 12
+  },
+  {
+    "a.name": "MSP",
+    "count(f)": 9
+  },
+  {
+    "a.name": "MOT",
+    "count(f)": 8
+  },
+  {
+    "a.name": "EWR",
+    "count(f)": 7
+  },
+  {
+    "a.name": "SLC",
+    "count(f)": 5
+  },
+  {
+    "a.name": "HNL",
+    "count(f)": 5
+  },
+  {
+    "a.name": "FSD",
+    "count(f)": 5
+  },
+  {
+    "a.name": "MCO",
+    "count(f)": 4
+  },
+  {
+    "a.name": "PDX",
+    "count(f)": 4
+  },
+  {
+    "a.name": "BOS",
+    "count(f)": 4
+  },
+  {
+    "a.name": "DFW",
+    "count(f)": 4
+  },
+  {
+    "a.name": "SAN",
+    "count(f)": 4
+  },
+  {
+    "a.name": "BHM",
+    "count(f)": 4
+  },
+  {
+    "a.name": "CVG",
+    "count(f)": 4
+  },
+  {
+    "a.name": "ABQ",
+    "count(f)": 4
+  },
+  {
+    "a.name": "FAT",
+    "count(f)": 4
+  },
+  {
+    "a.name": "DLH",
+    "count(f)": 4
+  },
+  {
+    "a.name": "SEA",
+    "count(f)": 3
+  },
+  {
+    "a.name": "PHX",
+    "count(f)": 3
+  },
+  {
+    "a.name": "SBN",
+    "count(f)": 3
+  },
+  {
+    "a.name": "SNA",
+    "count(f)": 2
+  },
+  {
+    "a.name": "LAS",
+    "count(f)": 2
+  },
+  {
+    "a.name": "ATL",
+    "count(f)": 2
+  },
+  {
+    "a.name": "CMH",
+    "count(f)": 2
+  },
+  {
+    "a.name": "SJC",
+    "count(f)": 2
+  },
+  {
+    "a.name": "LGA",
+    "count(f)": 2
+  },
+  {
+    "a.name": "TUS",
+    "count(f)": 2
+  },
+  {
+    "a.name": "SAT",
+    "count(f)": 1
+  },
+  {
+    "a.name": "FLL",
+    "count(f)": 1
+  },
+  {
+    "a.name": "KOA",
+    "count(f)": 1
+  },
+  {
+    "a.name": "SMF",
+    "count(f)": 1
+  },
+  {
+    "a.name": "RIC",
+    "count(f)": 1
+  },
+  {
+    "a.name": "IND",
+    "count(f)": 1
+  },
+  {
+    "a.name": "MCI",
+    "count(f)": 1
+  },
+  {
+    "a.name": "MSN",
+    "count(f)": 1
+  },
+  {
+    "a.name": "BIL",
+    "count(f)": 1
+  },
+  {
+    "a.name": "ROC",
+    "count(f)": 1
+  },
+  {
+    "a.name": "CLT",
+    "count(f)": 1
+  },
+  {
+    "a.name": "DCA",
+    "count(f)": 1
+  },
+  {
+    "a.name": "PBI",
+    "count(f)": 1
+  },
+  {
+    "a.name": "MIA",
+    "count(f)": 1
+  },
+  {
+    "a.name": "MOB",
+    "count(f)": 1
+  }
+]
