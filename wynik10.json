@@ -1,0 +1,31 @@
+﻿[
+  {
+    "a": {
+      "identity": 21,
+      "labels": [
+        "Airport"
+      ],
+      "properties": {
+        "name": "MSN"
+      }
+    },
+    "a2": {
+      "identity": 7,
+      "labels": [
+        "Airport"
+      ],
+      "properties": {
+        "name": "ORD"
+      }
+    },
+    "a3": {
+      "identity": 68,
+      "labels": [
+        "Airport"
+      ],
+      "properties": {
+        "name": "GRR"
+      }
+    }
+  }
+]

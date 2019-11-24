@@ -3,10 +3,50 @@
 3. match t=((d:town{name:"Darjeeling"})-[r*]->(pe:peak{name:"Sandakphu"})) return t,reduce(total=0, tot in relationships(t)|total+tot.distance) as totalDist order by totalDist
 3b. match (place)<-[re:twowheeler*{summer:"true"}]-(d{name:"Darjeeling"}) return place, d,re
 4. match (f:Flight)-[:ORIGIN]->(a:Airport) return a.name, count(f) order by count(f) desc
+
+dodatkowe zapytanie
+match (a1:Airport)<-[:ORIGIN]-(f:Flight)-[:DESTINATION]->(a2:Airport), (t:Ticket)-[:ASSIGN]->(f) 
+create (a1)-[:CONNECTION{price:t.price}]->(a2)
+
+match (a1:Airport)<-[:ORIGIN]-(f:Flight)-[:DESTINATION]->(a2:Airport), (t:Ticket)-[:ASSIGN]->(f) 
+with a1, a2, f, min(t.price) as minPrice
+match (ticket:Ticket{price: minPrice})-[:ASSIGN]->(f)
+create (a1)-[ch:CHEAPEST{price:ticket.price}]->(a2) return ch
+
 5. 
-to bezpośrednio, z przesiadkami nie wiem (jeszcze)
-match (a:Airport)<-[:DESTINATION]-(f:Flight)-[:ORIGIN]->(la:Airport{name:"LAX"}),(f)<-[:ASSIGN]-(t:Ticket) where t.price < 3000 return a,la,f, t
+match t=(lax:Airport{name:"LAX"})-[:CHEAPEST*1..3]->(a:Airport), ()-[:ORIGIN]->(lax) with t,a, reduce(cost=0, c in relationships(t)|cost+c.price) as totalCost where totalCost< 3000 return distinct a
+(bez ograniczenia na przesiadki byłoby bez 1..3, ale dla większej liczby nie chciało dać jakiegokolwiek wyniku i maszyna padała)
+
 6. 
+match t= (lax:Airport{name:"LAX"})-[c:CONNECTION*]->(day:Airport{name:"DAY"}), ()-[:ORIGIN]->(lax), ()-[:DESTINATION]->(day) with t, reduce(cost=0, co in relationships(t)|cost+co.price) as totalCost return totalCost order by totalCost desc
+bez wyniku, bardzo długo przeglądarka mieliła
+
+7.
+match t= (lax:Airport{name:"LAX"})-[c:CHEAPEST*1..3]->(day:Airport{name:"DAY"}), ()-[:ORIGIN]->(lax), ()-[:DESTINATION]->(day) with reduce(cost=0, co in relationships(t)|cost+co.price) as totalCost return totalCost order by totalCost limit 1
+bez wyniku
+
+8.
+match (a1:Airport)<-[:ORIGIN]-(f:Flight)-[:DESTINATION]->(a2:Airport), (t:Ticket)-[:ASSIGN]->(f) 
+with a1, a2, f,t, min(t.price) as minPrice
+match (ticket:Ticket{price: minPrice, class:"business"})-[:ASSIGN]->(f)
+create (a1)-[ch:CHEAPEST_BUSINESS{price:ticket.price, class: t.class}]->(a2) return ch
+
+match t= (lax:Airport{name:"LAX"})-[c:CHEAPEST_BUSINESS*1..7]->(day:Airport{name:"DAY"}), ()-[:ORIGIN]->(lax), ()-[:DESTINATION]->(day) with  reduce(cost=0, co in relationships(t)|cost+co.price) as totalCost return totalCost order by totalCost limit 1
+żadne rekordy nie pasują
+
+9.
+match (a1:Airport)<-[:ORIGIN]-(f:Flight)-[:DESTINATION]->(a2:Airport)
+with a1, a2, f
+create (a1)-[ch1:CONNECTED]->(f),(a2)-[ch2:CONNECTED]->(f) return ch1, ch2
+
+match (a:Airport)-[:CONNECTED]->(f:Flight) return f.airline, count(distinct a)
+
+10.
+match t=(a:Airport)-[:CHEAPEST]->(a2:Airport)-[:CHEAPEST]->(a3:Airport) with a,a2,a3,reduce(cost=0, co in relationships(t)|cost+co.price) as totalCost where a<>a3 return a,a2,a3 order by totalCost limit 1
+
+
+
+
 
 Część 1 – Wycieczki górskie
 Zaimportuj dane uruchamiając skrypt task2.cypher. Napisz następujące zapytania:  
@@ -16,6 +56,7 @@ na Sandakphu i które mogą być wykorzystywane zimą (zwraca 'duplikaty', bo mi
 3.	Uszereguj trasy którymi można dostać się z Darjeeling na Sandakphu 
 według dystansu Znajdź wszystkie miejsca do których można dotrzeć 
 przy pomocy roweru (twowheeler) z Darjeeling latem (akurat z darjeeling nie można nigdzie dojechać rowerem, ale dla jakiegoś innego przykładu np Rimbik pokazane są też trasy czym innym niż twowheeler- chyba po prostu wszystkie łączące dwa miejsca, a nie tylko te wheelerowe)
+
 
 Część 2 – Połączenia lotnicze
 Zaimportuj dane uruchamiając skrypt task3.cypher. Napisz następujące zapytania:
@@ -31,8 +72,3 @@ pomiędzy którymi oferują połączenia
 (unikalnych miast biorących udział w relacjach 
 :ORIGIN i :DESTINATION węzłów typu Flight obsługiwanych przez daną linię) 
 10.	Znajdź najtańszą trasę łączącą 3 różne porty lotnicze
-
-???
-match t=((la:Airport{name:"LAX"})-[r*]->(a:Airport)) where reduce(cost=0, co in relationships(t)|cost+co.price) as totalCost return t,totalCost
-match t=((la:Airport{name:"LAX"})<-[:ORIGIN]-(f:Flight)->
-([r*]->(a:Airport)) where reduce(cost=0, co in relationships(t)|cost+co.price) as totalCost return t,totalCost
