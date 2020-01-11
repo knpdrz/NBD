@@ -38,13 +38,14 @@ object c10 {
     że a jest liczbą naturalną a b jest jej dzielnikiem. Zadbaj o to, by generator był leniwie ewaluowany.
     Przy użyciu metod take i next wypisz w kilku kolejnych wywołaniach 20 pierwszych elementów ciągu.*/
 
-    val gen = for (a <- LazyList.from(1); b <- 1 to a if a % b == 0) yield (a, b)
-    val it = gen.iterator
+    def gen = for (a <- Iterator.from(1); b <- 1 to a if a % b == 0) yield (a, b)
+    val it = gen.buffered
 
     println("1")
-    for (_ <- 1 to 20) {
+    for (_ <- 1 to 10) {
       print(it.next() + " ")
     }
+    it take 10 foreach print
     println()
 
     println("2")
